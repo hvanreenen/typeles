@@ -3,6 +3,8 @@ import msvcrt
 
 import sys
 
+import winsound
+
 from statistics import Statistics, StatisticsRow
 from text_reader import TextReader
 
@@ -22,9 +24,8 @@ class TypeLesson():
     def start(self):
         self.is_running = True
         self.statistics_row = self.statistics.get_last_row()
-        self.text_reader = TextReader(self.statistics_row.story_number)
-        line_number = self.statistics_row.line_number
-        line = self.text_reader.get_line(line_number)
+        self.text_reader = TextReader(self.statistics_row.story_number, self.statistics_row.line_number)
+        line = self.text_reader.next_line()
         print(line)
         char_number = 0
 
@@ -38,9 +39,9 @@ class TypeLesson():
                     char_number -= 1
                     sys.stdout.write('\x08')
                     sys.stdout.flush()
+
             elif char == b'\r': #ENTER
-                line_number += 1
-                line = self.text_reader.get_line(line_number)
+                line = self.text_reader.next_line()
                 print()
                 print(line)
                 char_number = 0
@@ -48,7 +49,7 @@ class TypeLesson():
                 char = char.decode("utf-8")
 
 
-                if char_number > len(line) -1 or char != line[char_number]:
+                if ord(line[char_number]) < 128 and (char_number > len(line) -1 or char != line[char_number]):
                     self.handle_error(char)
                 else:
                     self.error_mode = False
@@ -66,9 +67,12 @@ class TypeLesson():
         if not self.error_mode:
             self.error_mode = True
             self.typed_errors += 1
+            # RED = "\x1b[1;31m"
+            # sys.stdout.write(RED)
             sys.stdout.write(char)
             sys.stdout.write('\x08')
             sys.stdout.flush()
+            winsound.Beep(220, 500)
 
 
     def stop(self):
@@ -86,11 +90,11 @@ class TypeLesson():
 
 
 
-        duration = self.statistics_row.get_duration()
+        duration = self.statistics_row.get_duration_as_time_format()
         per_minute = self.statistics_row.get_keystrokes_per_minute()
         print()
         print()
-        print('Gestopt. Duur: {}, Toetsaanslagen per minuut: {}, Getypt: {}, Fouten: {}'.format(duration, per_minute, self.typed_chars, self.typed_errors))
+        print('Gestopt. Duur: {0}, Toetsaanslagen per minuut: {1}, Getypt: {2}, Fouten: {3}'.format(duration, round(per_minute, 0), self.typed_chars, self.typed_errors))
 
         self.statistics.add_row(self.statistics_row)
         self.statistics.write()
