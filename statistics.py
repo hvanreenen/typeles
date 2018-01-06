@@ -39,29 +39,35 @@ class Statistics():
 
     def get_plot_data(self):
         days = []
-        means1 = []
-        means2 = []
+        means_speed = []
+        means_errors = []
+        typed_chars = []
         day = ''
         entries_per_day = 0
-        sum1 = 0
-        sum2 = 0
+        sum_duration = 0
+        sum_errors = 0
+        sum_typed_chars = 0
         for dict_row in self.rows:
             row = StatisticsRow.to_obj(dict_row)
             if day and day != row.get_day():
-                means1.append(sum1/entries_per_day)
-                means2.append(sum2/entries_per_day)
+                means_speed.append(sum_typed_chars/(sum_duration/60))
+                means_errors.append(sum_errors/sum_typed_chars * 10000)
+                typed_chars.append(sum_typed_chars)
                 days.append(day.strftime('%m-%d'))
                 entries_per_day = 0
-                sum1 = 0
-                sum2 = 0
+                sum_duration = 0
+                sum_errors = 0
+                sum_typed_chars= 0
             day = row.get_day()
             entries_per_day += 1
-            sum1 += row.get_keystrokes_per_minute()
-            sum2 += row.get_errors_per_typed_chars() * 10000
-        means1.append(sum1/entries_per_day)
-        means2.append(sum2/entries_per_day)
+            sum_duration += row.get_duration()
+            sum_errors += row.typed_errors
+            sum_typed_chars += row.typed_chars
+        means_speed.append(sum_typed_chars/(sum_duration/60))
+        means_errors.append(sum_errors/sum_typed_chars * 10000)
+        typed_chars.append(sum_typed_chars)
         days.append(day.strftime('%m-%d'))
-        return days, means1, means2
+        return days, means_speed, means_errors
 
     def plot(self):
         import matplotlib.pyplot as plt
