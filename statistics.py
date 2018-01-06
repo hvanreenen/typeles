@@ -37,6 +37,44 @@ class Statistics():
             writer.writeheader()
             writer.writerows(self.rows)
 
+    def get_plot_data(self):
+        days = []
+        means1 = []
+        means2 = []
+        day = ''
+        entries_per_day = 0
+        sum1 = 0
+        sum2 = 0
+        for dict_row in self.rows:
+            row = StatisticsRow.to_obj(dict_row)
+            if day and day != row.get_day():
+                means1.append(sum1/entries_per_day)
+                means2.append(sum2/entries_per_day)
+                days.append(day.strftime('%m-%d'))
+                entries_per_day = 0
+                sum1 = 0
+                sum2 = 0
+            day = row.get_day()
+            entries_per_day += 1
+            sum1 += row.get_keystrokes_per_minute()
+            sum2 += row.get_errors_per_typed_chars() * 10000
+        means1.append(sum1/entries_per_day)
+        means2.append(sum2/entries_per_day)
+        days.append(day.strftime('%m-%d'))
+        return days, means1, means2
+
+    def plot(self):
+        import matplotlib.pyplot as plt
+        self.rows = []
+        self.read()
+        days, means1, means2 = self.get_plot_data()
+        plt.plot(days, means1, 'b--', days, means2, 'r--')
+        plt.show()
+
+
+
+
+
 
 
 class StatisticsRow():
@@ -69,4 +107,35 @@ class StatisticsRow():
         else:
             return 0
 
+    def get_day(self):
+        return self.start_time.date()
 
+    def get_errors_per_typed_chars(self):
+        return self.typed_errors / self.typed_chars
+
+    @staticmethod
+    def to_obj(dict_row):
+        obj = StatisticsRow()
+        obj.start_time = datetime.datetime.strptime(dict_row['start_time'][:19], '%Y-%m-%d %H:%M:%S')
+        obj.end_time = datetime.datetime.strptime(dict_row['end_time'][:19], '%Y-%m-%d %H:%M:%S')
+        obj.typed_chars = int(dict_row['typed_chars'])
+        obj.typed_errors = int(dict_row['typed_errors'])
+        obj.story_number = int(dict_row['story_number'])
+        obj.line_number = int(dict_row['line_number'])
+        return obj
+
+
+if __name__ == '__main__':
+    s = Statistics()
+    s.plot()
+    # # plt.plot([1,2,3,4], [2,2,3,4])
+    # # plt.ylabel('some numbers')
+    # # plt.show()
+    #
+    # t = ['2017-10-10','2017-10-11','2017-10-12','2017-10-14']
+    # t2 = [2,4,6,8]
+    # t3 =[ 7,6,5,4]
+    #
+    # # red dashes, blue squares and green triangles
+    # plt.plot(t, t2, 'r--', t, t3, 'b--')
+    # plt.show()

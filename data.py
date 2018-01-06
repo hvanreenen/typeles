@@ -106,7 +106,6 @@ ben je meestal opgelucht. Eerlijk zijn geeft je je integriteit terug. Het
 plaatje dat je vervolgens ziet is zonder vage vlekken, het is helder.
 Daar begint vrijheid, absolute vrijheid.’
 Hoe zit dat dan in vriendschappen? Je doet toch af en toe iets
-7
 voor iemand, al heb je er niet altijd zin in?
 ‘Proberen om iets van een ander te krijgen, zoals waardering of liefde,
 door oneerlijk te zijn is iets heel raars. Laat het los, wees eerlijk – en
@@ -138,7 +137,6 @@ heb er een hekel aan. Ze kwam aan mijn deur om te vragen of ze me
 kon helpen. Heel aardig. Ik zei: ‘Nee, ik heb niets nodig, ik wil alleen
 zijn.’ Ook de volgende dag vroeg ze: ‘Kan ik iets voor je doen?’ Ik dacht
 er over na, want tja, daar stond ze en ze was attent. ‘Nee, alles wat ik
-8
 wil is alleen zijn.’ De derde dag was ze overstuur: ‘Ik ben hier om je te
 helpen, maar je wilt niets van me!’ Mijn reactie was: ‘Nee! En tussen
 twee haakjes: het maakt niet uit wie er aan mijn deur klopt, dus vat
@@ -170,8 +168,6 @@ of je niet mag schamen. Geen idee hoe dat ontstaan is. Er zijn massa’s
 mensen die zich hiermee uiteen moeten zetten. Waarom? Omdat ze
 niet op een ware manier mogen voelen. Vervolgens ontwijken ze hun
 gevoelens, die een eigen leven gaan leiden, of ze verzuipen erin. Maar
-8 9
-11
 dan heb je het niet meer over zuivere gevoelens!
 De boeddhisten zeggen dat je niets bereikt zonder vertrouwen,
 schaamte en berouw, omdat dit weerspiegelingen van je daden zijn.’
@@ -202,7 +198,6 @@ vorm van eerlijkheid. Of je kunt probéren om verlichting te
 bewerkstelligen? Vergeet het maar.
 Er zijn zoveel ideeën over verlichting, ik praat er bijna nooit over, het
 is een concept.’
-10
 Jouw leven staat in dienst van anderen; je reist je een slag in de
 rondte, hebt altijd mensen om je heen. Is dat wat je altijd wilt?
 ‘Ik kan me niet voorstellen dat ik iets anders doe! We spraken hier
@@ -228,8 +223,7 @@ ze – inderdaad – ALLES mogelijk maken. ‘Mogelijkheid’ betekent dat
 we niets weten van wat er in de volgende minuut gebeurt en dat we
 allemaal op de rand van het onbekende leven. Als je het zo bekijkt verdwijnt
 alle dramatiek. Je maakt gewoon je keuzes.´
-10 11
-ShantiMayi over schuld en schaamte
+ShantiMayi over schuld en schaamte.
 ‘Als ik een deur dichtgooi en ik zie dat je ervan schrikt en dat spijt me
 echt, dan wil ik die spijt werkelijk voelen. Ik wil voelen waar ik jou
 bezeerd heb, want ik wil een fijngevoelig mens zijn, nee, ik bén een
@@ -243,9 +237,7 @@ Maar heeft het iets met schaamte te maken dat veel vrouwen het
 moeilijk vinden om hun kind in het openbaar borstvoeding te geven?
 Diezelfde vrouwen hebben er absoluut geen probleem mee om met
 hun borsten te pronken in een bloot bloesje! Hoe bloter hoe beter!’
-12
-13
-Over ShantiMayi
+Over ShantiMayi.
 De Amerikaanse ShantiMayi (1950) wordt gezien
 als een wereldleraar, is moeder, grootmoeder en
 overgrootmoeder. Ze heeft zich lang geleden via
@@ -263,8 +255,7 @@ niet iedereen van míj houdt. Dat is te begrijpen, want
 ik ben heel rechtstreeks en daardoor confronterend.’
 ShantiMayi reist al jaren de wereld over, satsangs
 gevend, mensen ontmoetend.
-www.shantimayi.com
-14""",
+www.shantimayi.com""",
          """
 
 

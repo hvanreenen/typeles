@@ -14,7 +14,7 @@ class TypeLesson():
         self.is_running = False
         self.typed_chars = 0
         self.typed_errors = 0
-        self.start_time = datetime.datetime.now()
+        self.start_time = None #pas beginnen na eerste toets aanslag
         self.end_time = None
         self.error_mode = False
         self.statistics = Statistics()
@@ -31,6 +31,9 @@ class TypeLesson():
 
         while self.is_running:
             char = msvcrt.getch()
+            if not self.start_time:
+                #pas beginnen na eerste toets aanslag
+                self.start_time = datetime.datetime.now()
             # char = input()
             if char == b'\x1b': #ESCAPE
                 self.stop()
@@ -48,8 +51,9 @@ class TypeLesson():
             else:
                 char = char.decode("utf-8")
 
-
-                if ord(line[char_number]) < 128 and (char_number > len(line) -1 or char != line[char_number]):
+                if char_number > len(line) -1:
+                    self.handle_error(char)
+                elif ord(line[char_number]) < 128 and (char_number > len(line) -1 or char != line[char_number]):
                     self.handle_error(char)
                 else:
                     self.error_mode = False
@@ -79,6 +83,7 @@ class TypeLesson():
         self.end_time = datetime.datetime.now()
         self.is_running = False
         self.write_stats()
+        self.statistics.plot()
 
     def write_stats(self):
         self.statistics_row.start_time = self.start_time
